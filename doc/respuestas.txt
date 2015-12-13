@@ -1,0 +1,21 @@
+1. Modificar el ejemplo `Cliente de Eco` del directorio de código fuente de manera que:
+   Se especifique en la línea de comandos el nombre de la máquina servidora y 
+   el número de puerto. 
+   Si no se especifica nada, el servidor por defecto será `localhost`
+   y el puerto el número 8187.
+   Para indicar el final de una sesión cliente el usuario ha de introducir por teclado
+   un punto `.`. 
+   Cuando se introduzca un punto se ha de salir del bucle de entrada
+   y se ha de cerrar el socket de datos.
+   -----------------------------------
+   *************************************************************************************************
+   
+   *************************************************************************************************
+   
+   *************************************************************************************************
+   
+   *************************************************************************************************
+   
+   *************************************************************************************************
+   
+   **************************************************************************************************
