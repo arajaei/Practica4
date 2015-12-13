@@ -3,11 +3,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class EchoClient1 {
+public class EchoClient4_2 {
   public static void main(String[] args) throws Exception {
     String hostname = "localhost";
 
-    Socket theSocket = new Socket(hostname, 8180);
+    Socket theSocket = new Socket(hostname, 8181);
     BufferedReader networkIn = new BufferedReader(new InputStreamReader(theSocket.getInputStream()));
     BufferedReader userIn = new BufferedReader(new InputStreamReader(System.in));
     PrintWriter out = new PrintWriter(theSocket.getOutputStream());

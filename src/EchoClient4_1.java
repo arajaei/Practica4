@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class EchoClient1 {
+public class EchoClient4_1 {
   public static void main(String[] args) throws Exception {
     String hostname = "localhost";
 

@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class EchoServer {
+public class EchoServer2_1 {
 
     private static final int PORT = 8180;
 
@@ -23,7 +23,7 @@ public class EchoServer {
         Socket clientSocket = null;
         try {
             clientSocket = serverSocket.accept();
-            System.out.println("coneccion esta aceptada en el puerta numero  :"+ PORT); 
+            System.out.println("coneccion esta aceptada en el puerta numero  :"+ PORT);
         }
         catch (IOException e) {
             System.err.println("Accept failed.");
@@ -39,8 +39,6 @@ public class EchoServer {
         while ((inputLine = in.readLine()) != null) {
             System.out.println("echoing: " + inputLine);
             out.println(inputLine);
-                      
-            
         }
         out.close();
         in.close();

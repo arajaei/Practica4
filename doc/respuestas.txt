@@ -8,14 +8,108 @@
    Cuando se introduzca un punto se ha de salir del bucle de entrada
    y se ha de cerrar el socket de datos.
    -----------------------------------
+   El codigo modificado esta con nombre EchoClient1
    *************************************************************************************************
+    2. Implementar un `Servidor de Eco` como el que proporcionan los servidores Unix en
+       el puerto 7. Partiendo del código fuente proporcionado, diseñe un servidor iterativo, 
+       que verifique lo siguiente:
+
+         * Se ha de especificar en la línea de comandos el número de puerto en el que
+           el servidor acepta conexiones (por ejemplo, 8180). 
+           Si no se especifica nada, el número de puerto por defecto será el 8187.
+  -------------------------------------
+  Fichero EchoServer2_1
+  -------------------------------------
+         * Abrir un flujo de entrada desde el socket servidor. 
+  -------------------------------------
+  
+  
+  -------------------------------------
+  
+         * Abrir un flujo de salida al socket. 
+  -------------------------------------
+  
+  
+  -------------------------------------
+  
+         * El programa ha de actuar como repetidor, recogiendo las líneas que llegan por el
+           canal de entrada y escribiéndolas en el canal de salida, hasta que el usuario le
+           indique que ha terminado, escribiendo un punto “.”. 
+   ------------------------------------
    
+   ------------------------------------
+
+         * Cuando ya no haya más líneas que leer, se recibirá un punto, lo cual hará que 
+           el servidor salga del bucle de entrada y cierre el socket servidor.
+   ------------------------------------
+
+
+
+   ------------------------------------
+
+         * Para probar que funciona, ejecute el programa servidor en un consola, 
+           y en otra terminal el `Cliente de Eco`.
+   ------------------------------------
+ Ya todo hecho.
+
+   ------------------------------------
+---------------------------------------------------
+
+
+
+
    *************************************************************************************************
-   
+      3. Con los dos programas anteriores realice las siguientes operaciones:
+
+         * Ejecute los programas empezando por el servidor y a continuación el cliente.
+
+         * En una terminal diferente arranque a otro cliente.
+
+         * Dibuje el **diagrama de secuencia**. ¿Se pueden realizar las dos sesiones en paralelo?
+
+         * Explique su respuesta.
+--------------------------------------------------
+Ejecutando primero el servidor y luego el cliente to do los pasos siguen correcto pero cuando 
+abrimos otro terminal y ejecutamos otro cliente parte cliente funciona bien pero el solisitud 
+no esta aceptado y cliente 2 se queda colocado .
+
+0)sever esta esperando a una solicitud -> puerta 
+1)Llega solicitud desde cliente y server confirma coneccion
+2)El cliente coge entrada y manda a server y informa al servidor que el mensaje esta en el puerta
+3)el servidor recibe el mensaje y a traves del canal out manda al cliente 
+4)cuando cliente 2 manda una solicitud al servidor , el servidor no esta esperando a solicitud y 
+por eso el cliente 2 se queda sin coneccion.
+
+Si se puede realizar los dos sesion en paralelo.
+Hay que hacer algunos modificaciones en el codigo servidor para que paralelmente 
+controle otros solicitudes si recibe.
    *************************************************************************************************
-   
+   4. Modificar el `Servidor de eco` del ejercicio 2, para que sea un servidor concurrente.
+     Estan realizado en el fichero EchoServidor4.java y EchoClient4_1 y EchoClient4_2 
+     pero ejecutando el programa se puede entender que cuando usamos una bucle para que 
+     el servidor responde a todo los lientes segun de implimentacion de metodo in.readLine()
+     hasta que no resibe un mensaje la ejecucion se bloquea y para que funcione tiene que cada 
+     cliente pone su mensaje con un sicuencia y este es una restriccion que se puede solicionar
+     con otra tecnica asi que utlizar distintos objetos de la clase servidor para que cada uno de los objetos 
+     paralelmente hacen sus tareas.
+--------------------------------------------------
+
+
    *************************************************************************************************
-   
+ 5. Con el programa anterior y el `Cliente de Eco` del ejercicio 1 realice las siguientes
+       operaciones:
+
+         * Ejecute los programas empezando por el servidor y a continuación el cliente.
+
+         * En una terminal diferente arranque a otro cliente.
+
+         * Dibuje el diagrama de secuencia. ¿Se pueden realizar las dos sesiones del cliente en
+           paralelo? Explique su respuesta.
+-------------------------------------------------
+
    *************************************************************************************************
-   
+    6. Describa las diferencias, desde el punto de vista del cliente, entre un servidor iterativo
+       y un servidor concurrente para un servicio que involucre múltiples rondas de intercambios 
+       de mensajes.
+----------------------------------------------   
    **************************************************************************************************
