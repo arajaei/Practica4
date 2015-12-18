@@ -7,10 +7,21 @@ import java.net.Socket;
 
 public class EchoServer {
 
-    private static final int PORT = 8180;
+   
 
     public static void main(String[] args) throws Exception {
-
+       
+        int PORT = 8187;
+        
+        if(args.length ==1)
+         {
+              PORT= Integer.parseInt(args[0]);
+          }
+        if(args.length != 0 && args.length != 1)
+         {
+             System.out.println("You can use this function only with 0 or 1 orguments !!!!");
+             
+         }
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(PORT);
