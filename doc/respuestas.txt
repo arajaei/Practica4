@@ -8,7 +8,9 @@
    Cuando se introduzca un punto se ha de salir del bucle de entrada
    y se ha de cerrar el socket de datos.
    -----------------------------------
-   El codigo modificado esta con nombre EchoClient1
+   El codigo modificado esta con nombre EchoClient.java y EchoServer.java 
+   y funciona perfecta mente.
+  
    *************************************************************************************************
     2. Implementar un `Servidor de Eco` como el que proporcionan los servidores Unix en
        el puerto 7. Partiendo del código fuente proporcionado, diseñe un servidor iterativo, 
@@ -18,7 +20,7 @@
            el servidor acepta conexiones (por ejemplo, 8180). 
            Si no se especifica nada, el número de puerto por defecto será el 8187.
   -------------------------------------
-  Fichero EchoServer2_1
+    La respuesta esta en el fichero EchoServer2
   -------------------------------------
          * Abrir un flujo de entrada desde el socket servidor. 
   -------------------------------------
@@ -69,20 +71,16 @@
 
          * Explique su respuesta.
 --------------------------------------------------
-Ejecutando primero el servidor y luego el cliente to do los pasos siguen correcto pero cuando 
-abrimos otro terminal y ejecutamos otro cliente parte cliente funciona bien pero el solisitud 
-no esta aceptado y cliente 2 se queda colocado .
+no, no se puede realizar las dos sesiones en paralelo, y solo se puede iterativamente repetir pasos 
+para otros clientes despues de terminar cliente anterior.
+similizacion de diagrama de secuencia :
+0- el servidor esta escuchando a puerta
+1- el cliente manda demanda para coneccion.
+2- el servidor acepta y le asingna coneccion.
+3
 
-0)sever esta esperando a una solicitud -> puerta 
-1)Llega solicitud desde cliente y server confirma coneccion
-2)El cliente coge entrada y manda a server y informa al servidor que el mensaje esta en el puerta
-3)el servidor recibe el mensaje y a traves del canal out manda al cliente 
-4)cuando cliente 2 manda una solicitud al servidor , el servidor no esta esperando a solicitud y 
-por eso el cliente 2 se queda sin coneccion.
+--------------------------------------------------
 
-Si se puede realizar los dos sesion en paralelo.
-Hay que hacer algunos modificaciones en el codigo servidor para que paralelmente 
-controle otros solicitudes si recibe.
    *************************************************************************************************
    4. Modificar el `Servidor de eco` del ejercicio 2, para que sea un servidor concurrente.
      Estan realizado en el fichero EchoServidor4.java y EchoClient4_1 y EchoClient4_2 
