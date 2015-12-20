@@ -72,26 +72,24 @@
          * Explique su respuesta.
 --------------------------------------------------
 no, no se puede realizar las dos sesiones en paralelo, y solo se puede iterativamente repetir pasos 
-para otros clientes despues de terminar cliente anterior.
-similizacion de diagrama de secuencia :
-0- el servidor esta escuchando a puerta
-1- el cliente manda demanda para coneccion.
-2- el servidor acepta y le asingna coneccion.
-3
-
+para otros clientes despues que se termio el cliente anterior pulsando '.'.
+simulacion de diagrama de secuencia :
+0- El servidor esta escuchando a puerta
+1- El cliente manda demanda para coneccion.
+2- El servidor acepta y le asingna coneccion.
+3- El cliente iterativamente manda mensajes al servidor
+4- El servidor esta en comunicacion con el primer cliente
+5- El cliente 2 manda un demanda para coneccion
+6- El cliente 2 se queda colocado y no responde el servidor 
+7- Cuando el primer cliente pulsa '.' se termine la coneccion
+8- el servidor empieza a comunicar con el cliente 2 
 --------------------------------------------------
 
    *************************************************************************************************
    4. Modificar el `Servidor de eco` del ejercicio 2, para que sea un servidor concurrente.
-     Estan realizado en el fichero EchoServidor4.java y EchoClient4_1 y EchoClient4_2 
-     pero ejecutando el programa se puede entender que cuando usamos una bucle para que 
-     el servidor responde a todo los lientes segun de implimentacion de metodo in.readLine()
-     hasta que no resibe un mensaje la ejecucion se bloquea y para que funcione tiene que cada 
-     cliente pone su mensaje con un sicuencia y este es una restriccion que se puede solicionar
-     con otra tecnica asi que utlizar distintos objetos de la clase servidor para que cada uno de los objetos 
-     paralelmente hacen sus tareas.
+   
 --------------------------------------------------
-
+ Esta realizada en el fichero EchoServidor4.java
 
    *************************************************************************************************
  5. Con el programa anterior y el `Cliente de Eco` del ejercicio 1 realice las siguientes
@@ -104,10 +102,22 @@ similizacion de diagrama de secuencia :
          * Dibuje el diagrama de secuencia. ¿Se pueden realizar las dos sesiones del cliente en
            paralelo? Explique su respuesta.
 -------------------------------------------------
+Simulacion se la diagrama de secuencia :
+0-El primer cliente manda una demanda al servidor y demanda se acepta 
+1-Se asigna una hilo de proseco al primer cliente y comunicacion se realiza entre ellos
+2-el segundo cliente manda una demanda al servidor y el servidor acepta y se asigna otro hilo de 
+proseco al servidor para realizar comunicacion.
+3-Asi susecivamente se realiza tarea en paralelo.
 
+si, se puede realizar las dos sesiones del cliente en paralelo asi que utlizando thread nos da
+posiblidades de hacer procesos en paralelo.
    *************************************************************************************************
     6. Describa las diferencias, desde el punto de vista del cliente, entre un servidor iterativo
        y un servidor concurrente para un servicio que involucre múltiples rondas de intercambios 
        de mensajes.
-----------------------------------------------   
+---------------------------------------------- 
+Desde el punto de vista del cliente en el caso de servidor iterativo el cliente tiene que esperar hasta que 
+llegue su turno entoces se pierde mucho tiempo, pero en el caso de servidor concurrente se parece al cliente 
+que el servidor siempre esta preparado para responder y nose pierde tiempo asi que por que se asigna un hilo de
+proceso a cada cliente entoces el cliente no siente que hay otra cliente.
    **************************************************************************************************
