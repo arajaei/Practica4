@@ -72,7 +72,7 @@
          * Explique su respuesta.
 --------------------------------------------------
 no, no se puede realizar las dos sesiones en paralelo, y solo se puede iterativamente repetir pasos 
-para otros clientes despues que se termio el cliente anterior pulsando '.'.
+para otros clientes despues que se termino el cliente anterior pulsando '.'.
 simulacion de diagrama de secuencia :
 0- El servidor esta escuchando a puerta
 1- El cliente manda demanda para coneccion.
@@ -82,9 +82,30 @@ simulacion de diagrama de secuencia :
 5- El cliente 2 manda un demanda para coneccion
 6- El cliente 2 se queda colocado y no responde el servidor 
 7- Cuando el primer cliente pulsa '.' se termine la coneccion
-8- el servidor empieza a comunicar con el cliente 2 
+8- el servidor asigna un strem al cliente 2 empieza a responder(echo) con el cliente 2 
 --------------------------------------------------
 
+cliente 1                    srvidor                      cliente 2
+
+   |             1              |                             |
+   | -------------------------> |                             |
+   |             2              |                             |
+   | <------------------------- |                             |
+   |             3              |                             |
+   | -------------------------> |              5              |
+   |             4(Echo)        | <-------------------------- |
+   | <------------------------- |                             |
+   |             .              | cliente 2 esta esperando    |
+   |             .              |             .               |
+   |             .              |             .               |
+   |             .              |             .               |
+   |             7('.')         |             .               |
+   | -------------------------> |             .               |
+   |                            |             8 (accept)      |
+   |                            | --------------------------> | 
+   |                            |                             |
+   |                            |             .               |
+   |                            |             .               |
    *************************************************************************************************
    4. Modificar el `Servidor de eco` del ejercicio 2, para que sea un servidor concurrente.
    
@@ -105,12 +126,47 @@ simulacion de diagrama de secuencia :
 Simulacion se la diagrama de secuencia :
 0-El primer cliente manda una demanda al servidor y demanda se acepta 
 1-Se asigna una hilo de proseco al primer cliente y comunicacion se realiza entre ellos
-2-el segundo cliente manda una demanda al servidor y el servidor acepta y se asigna otro hilo de 
-proseco al servidor para realizar comunicacion.
-3-Asi susecivamente se realiza tarea en paralelo.
+2-El cliente manda mensaje al servidor 
+3-El servidor Hace echo
+4-El segundo cliente manda una demanda al servidor
+5-El servidor acepta y se asigna otro hilo de proseco para realizar comunicacion.
+6-El cliente2 manda mensaje al servidor
+7-El servidor responde(Echo)
+8-El cliente 2 manda '.' para terminar comunicacion.
+9-El servidor esta esperando a otro cliente.
+
+cliente 1                    srvidor                      cliente 2
+
+   |             0              |                             |
+   | -------------------------> |                             |
+   |             1             /|                             |
+   | <------------------------| |                             |
+   |             2            | |                             |
+   | -----------------------> | |              4              |
+   |             3(Echo)      | | <-------------------------- |
+   | <----------------------- | |\ ------------5------------> |
+   |             .            | | |            6              |
+   |             .            | | | <-----------------------  |
+   |             .            | | |            7(Echo)        |
+   |             .            | | | ----------------------->  |
+   |             7('.')       | | |            .              |
+   | -----------------------> | | |            .              |
+   |            fin            \| |            .              |
+                                | |            8('.')         |
+                                | | <-----------------------  |
+                                |/                            |
+                                |             fin             |
+                                |
+                                |
+                                .
+                                9 
+                                .
+                                
+
 
 si, se puede realizar las dos sesiones del cliente en paralelo asi que utlizando thread nos da
 posiblidades de hacer procesos en paralelo.
+
    *************************************************************************************************
     6. Describa las diferencias, desde el punto de vista del cliente, entre un servidor iterativo
        y un servidor concurrente para un servicio que involucre múltiples rondas de intercambios 
@@ -118,6 +174,6 @@ posiblidades de hacer procesos en paralelo.
 ---------------------------------------------- 
 Desde el punto de vista del cliente en el caso de servidor iterativo el cliente tiene que esperar hasta que 
 llegue su turno entoces se pierde mucho tiempo, pero en el caso de servidor concurrente se parece al cliente 
-que el servidor siempre esta preparado para responder y nose pierde tiempo asi que por que se asigna un hilo de
+que el servidor siempre esta preparado para responder y no se pierde tiempo asi que, por que se asigna un hilo de
 proceso a cada cliente entoces el cliente no siente que hay otra cliente.
    **************************************************************************************************

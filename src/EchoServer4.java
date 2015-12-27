@@ -11,6 +11,12 @@ public class EchoServer4 extends Thread {
    public void run()
    {
         ServerSocket serverSocket = null;
+        
+        Socket clientSocket = null;
+        
+        PrintWriter out = null;
+        BufferedReader in = null;
+        
         try {
             serverSocket = new ServerSocket(8187);
         }
@@ -19,7 +25,7 @@ public class EchoServer4 extends Thread {
             System.exit(1);
         }
 
-        Socket clientSocket = null;
+        
         try {
             clientSocket = serverSocket.accept();
             System.out.println("coneccion esta aceptada en el puerta numero  :"+ 8187); 
@@ -29,23 +35,29 @@ public class EchoServer4 extends Thread {
             System.exit(1);
         }
 
-        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        try {
+          out = new PrintWriter(clientSocket.getOutputStream(), true);
+          in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+      
 
-        System.out.println("Echo server started");
+        
+          System.out.println("Echo server started");
 
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
+          String inputLine;
+          while ((inputLine = in.readLine()) != null) {
             System.out.println("echoing: " + inputLine);
             out.println(inputLine);
-           
+          }
+       
+          out.close();
+          in.close();
+          clientSocket.close();
+          serverSocket.close();
         }
-       
-        out.close();
-        in.close();
-        clientSocket.close();
-        serverSocket.close();
-       
+        catch (IOException e) {
+            System.err.println("I/O Stream  failed.");
+            System.exit(1);
+        }
    }
 
     public static void main(String[] args) throws Exception {
