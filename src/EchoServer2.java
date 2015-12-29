@@ -29,17 +29,19 @@ public class EchoServer2 {
         BufferedReader in=null;
         int i=1;
        
-      
-        while(i==1)
-        {
-
-        try {
+              try {
             serverSocket = new ServerSocket(PORT);
         }
         catch (IOException e) {
             System.err.println("Could not listen on port: " + PORT);
             System.exit(1);
         }
+        
+        
+        while(i==1)
+        {
+
+
    
         try {
             clientSocket = serverSocket.accept();
@@ -62,10 +64,12 @@ public class EchoServer2 {
                       
             
         }
-        serverSocket.close();
-        clientSocket.close();
+  
             
         }//while
+        serverSocket.close();
+        clientSocket.close(); 
+        
         out.close();
         in.close();
         clientSocket.close();
