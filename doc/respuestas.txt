@@ -110,7 +110,7 @@ cliente 1                    srvidor                      cliente 2
    4. Modificar el `Servidor de eco` del ejercicio 2, para que sea un servidor concurrente.
    
 --------------------------------------------------
- Esta realizada en el fichero EchoServidor4.java
+ Esta realizada en el fichero EchoServidor5.java
 
    *************************************************************************************************
  5. Con el programa anterior y el `Cliente de Eco` del ejercicio 1 realice las siguientes
@@ -164,7 +164,7 @@ cliente 1                    srvidor                      cliente 2
                                 
 
 
-si, se puede realizar las dos sesiones del cliente en paralelo asi que utlizando thread nos da
+si, se puede realizar las dos seciones del cliente en paralelo asi que utlizando thread nos da
 posiblidades de hacer procesos en paralelo.
 
    *************************************************************************************************
